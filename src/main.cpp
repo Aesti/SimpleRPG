@@ -1,7 +1,9 @@
 #include <iostream>
 #include <SDL2/SDL.h>
-#include <SDL2_image/SDL_image.h>
-
+//osx
+//#include <SDL2_image/SDL_image.h>
+//linux
+#include <SDL2/SDL_image.h>
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 //square tiles
