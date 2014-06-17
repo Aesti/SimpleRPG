@@ -11,7 +11,7 @@ else
 	LDFLAGS = $(SDL_LIB)
 endif
 
-EXE = bin/SimpleRPG
+EXE = SimpleRPG
 
 all: $(EXE)
 
