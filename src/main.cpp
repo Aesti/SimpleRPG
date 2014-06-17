@@ -2,7 +2,7 @@
 #include <SDL2/SDL.h>
 
 #ifdef TARGET_OS_MAC
-  //#include <SDL2_image/SDL_image.h>
+  #include <SDL2_image/SDL_image.h>
 #endif
 
 #ifdef __linux__
