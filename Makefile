@@ -15,11 +15,14 @@ EXE = SimpleRPG
 
 all: $(EXE)
 
-$(EXE): main.o
-	$(CXX) $< $(LDFLAGS) -o $@
+$(EXE): main.o Engine.o
+	$(CXX) $^ $(LDFLAGS) -o $@
 
-main.o: src/main.cpp
+main.o: src/main.cpp src/Engine.h
 	$(CXX) $(CXXFLAGS) $< -o $@
+Engine.o: src/Engine.cpp src/Engine.h
+	$(CXX) $(CXXFLAGS) $< -o $@
+
 
 clean:
 	rm *.o && rm $(EXE)
