@@ -25,4 +25,4 @@ obj/%.o: src/%.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 clean:
-	rm *.o && rm $(EXE)
+	rm obj/*.o && rm $(EXE)
