@@ -11,18 +11,18 @@ else
 	LDFLAGS = $(SDL_LIB)
 endif
 
+CPP_FILES = $(wildcard src/*.cpp)
+OBJ_FILES = $(addprefix obj/,$(notdir $(CPP_FILES:.cpp=.o)))
 EXE = SimpleRPG
+
 
 all: $(EXE)
 
-$(EXE): main.o Engine.o
-	$(CXX) $^ $(LDFLAGS) -o $@
+$(EXE): $(OBJ_FILES)
+	$(CXX) $(LDFLAGS) -o $@ $^
 
-main.o: src/main.cpp src/Engine.h
-	$(CXX) $(CXXFLAGS) $< -o $@
-Engine.o: src/Engine.cpp src/Engine.h
-	$(CXX) $(CXXFLAGS) $< -o $@
-
+obj/%.o: src/%.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 clean:
 	rm *.o && rm $(EXE)
