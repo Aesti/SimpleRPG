@@ -17,6 +17,7 @@ void Engine::render()
 {
     m_context->clear();
     m_context->draw_image("grass",0,0,40,40);
+    m_context->draw_image("grass",500,400,100,100);
     m_context->render();
 }
 
