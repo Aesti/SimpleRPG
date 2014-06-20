@@ -5,7 +5,9 @@
 #include <SDL2/SDL.h>
 #endif
 
+#include <iostream>
 #include <string>
+#include <map>
 
 class RenderContext {
 public:
@@ -16,7 +18,10 @@ public:
 
   void clear();
   void render();
-  void draw_image(std::string res, int x, int y);
+  void load_image(std::string file, std::string id);
+  void draw_image(std::string id, int x, int y, int width, int height);
+  std::map<std::string, SDL_Texture*> m_textureMap;
+
 
 private:
   #ifdef SDL2_RENDERER_DEF

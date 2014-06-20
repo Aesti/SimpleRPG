@@ -31,3 +31,30 @@ void RenderContext::render() {
   SDL_RenderPresent(m_renderer);
   #endif
 }
+void RenderContext::load_image(std::string file, std::string id){
+
+  std::cout << "Loading Image: " + id << std::endl;
+  SDL_Texture *texture = IMG_LoadTexture(m_renderer, file.c_str());
+  if (texture == nullptr){
+    std::cout << "Error Loading Image: " + id << std::endl;
+  }
+  if (texture != nullptr){
+      m_textureMap[id] = texture;
+      std::cout << "Added Image: " + id << std::endl;
+  }
+}
+void RenderContext::draw_image(std::string id, int x, int y, int width, int height){
+  SDL_Rect srcRect;
+  SDL_Rect destRect;
+
+  srcRect.x = 0;
+  srcRect.y = 0;
+  srcRect.w = destRect.w = width;
+  srcRect.h = destRect.h = height;
+
+  destRect.x = x;
+  destRect.y = y;
+
+  SDL_RenderCopyEx(m_renderer, m_textureMap[id], &srcRect,
+    &destRect, 0, 0, SDL_FLIP_NONE);
+}

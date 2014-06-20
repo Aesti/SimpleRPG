@@ -8,12 +8,15 @@ int height, int flags)
     m_context = new RenderContext(title, xpos, ypos, width, height, flags);
     isRunning = true;
 
+    m_context->load_image("res/grass1.png", "grass");
+
     return true;
 
 }
 void Engine::render()
 {
     m_context->clear();
+    m_context->draw_image("grass",0,0,40,40);
     m_context->render();
 }
 
