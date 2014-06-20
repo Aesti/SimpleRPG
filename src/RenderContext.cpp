@@ -33,16 +33,16 @@ void RenderContext::render() {
 }
 void RenderContext::load_image(std::string file, std::string id){
 
-  std::cout << "Loading Image: " + id << std::endl;
-  SDL_Texture *texture = IMG_LoadTexture(m_renderer, file.c_str());
-  if (texture == nullptr){
-    std::cout << "Error Loading Image: " + id << std::endl;
-  }
+  #ifdef SDL2_RENDERER_DEF
+  TEXTURE *texture = IMG_LoadTexture(m_renderer, file.c_str());
+  #endif
+
   if (texture != nullptr){
       m_textureMap[id] = texture;
-      std::cout << "Added Image: " + id << std::endl;
   }
 }
+
+#ifdef SDL2_RENDERER_DEF
 void RenderContext::draw_image(std::string id, int x, int y, int width, int height){
   SDL_Rect srcRect;
   SDL_Rect destRect;
@@ -58,3 +58,4 @@ void RenderContext::draw_image(std::string id, int x, int y, int width, int heig
   SDL_RenderCopyEx(m_renderer, m_textureMap[id], &srcRect,
     &destRect, 0, 0, SDL_FLIP_NONE);
 }
+#endif

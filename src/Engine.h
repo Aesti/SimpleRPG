@@ -20,7 +20,6 @@ public:
     void clean();
     bool running() { return isRunning; }
 private:
-  SDL_Window *m_window = NULL;
   RenderContext *m_context;
   bool isRunning;
 };
