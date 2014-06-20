@@ -12,6 +12,7 @@ else
 endif
 
 CPP_FILES = $(wildcard src/*.cpp)
+
 OBJ_FILES = $(addprefix obj/,$(notdir $(CPP_FILES:.cpp=.o)))
 EXE = SimpleRPG
 
@@ -19,10 +20,10 @@ EXE = SimpleRPG
 all: $(EXE)
 
 $(EXE): $(OBJ_FILES)
-	$(CXX) $(LDFLAGS) -o $@ $^
+	$(CXX) $^ $(LDFLAGS) -o $@
 
 obj/%.o: src/%.cpp
-	$(CXX) $(CXXFLAGS) -c -o $@ $<
+	$(CXX) $(CXXFLAGS) $< -o $@
 
 clean:
-	rm obj/*.o && rm $(EXE)
+	rm obj/* && rm $(EXE)
