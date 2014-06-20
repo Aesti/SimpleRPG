@@ -9,7 +9,7 @@ int height, int flags)
     isRunning = true;
 
     m_context->load_image("res/grass1.png", "grass");
-
+    m_context->load_image("res/hero1.png", "hero");
     return true;
 
 }
@@ -18,6 +18,7 @@ void Engine::render()
     m_context->clear();
     m_context->draw_image("grass",0,0,40,40);
     m_context->draw_image("grass",500,400,100,100);
+    m_context->draw_image("hero",300,200,40,80);
     m_context->render();
 }
 
