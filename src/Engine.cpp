@@ -1,21 +1,11 @@
 #include "Engine.h"
+#include <string>
 
-bool Engine::init(const char* title, int xpos, int ypos, int width, 
+bool Engine::init(std::string title, int xpos, int ypos, int width, 
 int height, int flags)
 {
-    if (SDL_Init(SDL_INIT_EVERYTHING) != 0){
-        std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
-        return false;
-    }
-
     //Research SDL_CreateWindowAndRenderer
-
-    window = SDL_CreateWindow(title, xpos,
-        ypos, width, height, flags);
-
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
-    std::cout << "SDL INIT SUCCESS!\n";
+    m_context = new RenderContext(title, xpos, ypos, width, height, flags);
     isRunning = true;
 
     return true;
@@ -23,17 +13,16 @@ int height, int flags)
 }
 void Engine::render()
 {
-    SDL_RenderClear(renderer);
-    SDL_RenderPresent(renderer);
-
+    m_context->clear();
+    m_context->render();
 }
+
 void Engine::clean()
 {
     std::cout << "Cleaning up!\n";
-    SDL_DestroyWindow(window);
-    SDL_DestroyRenderer(renderer);
-    SDL_Quit();
+    delete m_context;
 }
+
 void Engine::handleEvents()
 {
     SDL_Event event;

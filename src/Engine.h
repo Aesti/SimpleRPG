@@ -3,22 +3,16 @@
 
 #include <iostream>
 #include <SDL2/SDL.h>
-
-#ifdef TARGET_OS_MAC
-  #include <SDL2_image/SDL_image.h>
-#endif
-
-#ifdef __linux__
-  // Linux Includes Here
-  #include <SDL2/SDL_image.h>
-#endif
+#include "SDL_Image.h"
+#include "RenderContext.h"
+#include <string>
 
 class Engine
 {
 public:
     Engine() {}
     ~Engine() {}
-    bool init(const char* title, int xpos, int ypos, int width, int 
+    bool init(std::string title, int xpos, int ypos, int width, int 
           height, int flags);
     void render();
     void update();
@@ -26,8 +20,8 @@ public:
     void clean();
     bool running() { return isRunning; }
 private:
-  SDL_Window *window = NULL;
-  SDL_Renderer *renderer = NULL;
+  SDL_Window *m_window = NULL;
+  RenderContext *m_context;
   bool isRunning;
 };
 #endif
