@@ -1,5 +1,5 @@
 // helper to not have to do this in every file
-#ifdef TARGET_OS_MAC
+#ifdef __APPLE__
   #include <SDL2_image/SDL_image.h>
 #endif
 
