@@ -27,3 +27,6 @@ obj/%.o: src/%.cpp
 
 clean:
 	rm obj/* && rm $(EXE)
+
+run:
+	@$(MAKE) && ./$(EXE)

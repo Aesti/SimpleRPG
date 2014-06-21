@@ -67,8 +67,6 @@ void RenderContext::draw_image(std::string id, int x, int y){
   destRect.x = x;
   destRect.y = y;
 
-  std::cout << "Rendering at " << x << ", " << y << std::endl;
-
   SDL_RenderCopyEx(m_renderer, m_textureMap[id].texture, &srcRect,
     &destRect, 0, 0, SDL_FLIP_NONE);
 }

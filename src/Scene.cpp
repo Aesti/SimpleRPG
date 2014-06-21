@@ -18,7 +18,6 @@ void Scene::add(GameObject obj, int layer) {
 void Scene::draw(RenderContext &ctx) {
   for (auto it = m_layers.begin(); it != m_layers.end(); ++it) {
     for (auto obj = it->second.begin(); obj != it->second.end(); ++obj) {
-      std::cout << "Drawing " << obj->getImageID() << " at 300, 200" << std::endl;
       obj->draw(ctx, 300, 200);
     }
   }
