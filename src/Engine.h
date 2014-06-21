@@ -1,26 +1,31 @@
-#ifndef __Engine__
-#define __Engine__
+#pragma once 
 
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "SDL_Image.h"
-#include "RenderContext.h"
 #include <string>
+
+#include "RenderContext.h"
+#include "Scene.h"
 
 class Engine
 {
 public:
-    Engine() {}
-    ~Engine() {}
-    bool init(std::string title, int xpos, int ypos, int width, int 
+    Engine(std::string title, int xpos, int ypos, int width, int 
           height, int flags);
+    ~Engine() {};
     void render();
     void update();
     void handleEvents();
     void clean();
-    bool running() { return isRunning; }
+    bool running() { return isRunning; };
 private:
-  RenderContext *m_context;
-  bool isRunning;
+    bool init();
+
+    RenderContext m_context;
+    Scene *m_scene;
+
+    bool isRunning;
+
+
 };
-#endif

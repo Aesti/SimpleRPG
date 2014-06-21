@@ -1,31 +1,34 @@
 #include "Engine.h"
 #include <string>
 
-bool Engine::init(std::string title, int xpos, int ypos, int width, 
-int height, int flags)
+#include "GameObject.h"
+
+Engine::Engine(std::string title, int xpos, int ypos, int width, int height, int flags) :
+m_context(title, xpos, ypos, width, height, flags) {
+    init();
+}
+
+bool Engine::init()
 {
     //Research SDL_CreateWindowAndRenderer
-    m_context = new RenderContext(title, xpos, ypos, width, height, flags);
+    // m_context = RenderContext(title, xpos, ypos, width, height, flags);
     isRunning = true;
 
-    m_context->load_image("res/grass1.png", "grass");
-    m_context->load_image("res/hero1.png", "hero");
+    m_scene = new Scene();
+    m_scene->add(GameObject(m_context, std::string("res/hero1.png"), std::string("hero")), 0);
     return true;
 
 }
 void Engine::render()
 {
-    m_context->clear();
-    m_context->draw_image("grass",0,0,40,40);
-    m_context->draw_image("grass",500,400,100,100);
-    m_context->draw_image("hero",300,200,40,80);
-    m_context->render();
+    m_context.clear();
+    m_scene->draw(m_context);
+    m_context.render();
 }
 
 void Engine::clean()
 {
     std::cout << "Cleaning up!\n";
-    delete m_context;
 }
 
 void Engine::handleEvents()

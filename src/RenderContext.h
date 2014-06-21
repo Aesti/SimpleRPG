@@ -1,3 +1,5 @@
+#pragma once 
+
 #define SDL2_RENDERER_DEF
 
 #ifdef SDL2_RENDERER_DEF 
@@ -8,20 +10,30 @@ typedef SDL_Rect RECT;
 typedef SDL_Texture TEXTURE;
 #endif
 
-#include <iostream>
 #include <string>
 #include <map>
+
+struct TextureDesc
+{
+  TEXTURE *texture;
+  RECT rect;
+
+  TextureDesc(TEXTURE *t, RECT r)
+  : texture(t), rect(r) {}
+  TextureDesc() : texture(nullptr), rect(RECT()) {}
+};
 
 class RenderContext {
 public:
   RenderContext(std::string title, int xpos, int ypos, int width, int height, int flags);
+  RenderContext();
   ~RenderContext();
 
   void clear();
   void render();
   void load_image(std::string file, std::string id);
-  void draw_image(std::string id, int x, int y, int width, int height);
-  std::map<std::string, TEXTURE*> m_textureMap;
+  void draw_image(std::string id, int x, int y);
+  std::map<std::string, TextureDesc> m_textureMap;
 
 
 private:
@@ -30,3 +42,4 @@ private:
   SDL_Window *m_window;
   #endif
 };
+

@@ -4,11 +4,8 @@
 Engine* rpg = 0;
 
 int main (int argc, char *argv[]){
-
-    rpg = new Engine();
-
     std::string title = "Simple RPG 0.0.0";
-    rpg->init(title, 100, 100, 640, 580, SDL_WINDOW_OPENGL);
+    rpg = new Engine(title, 100, 100, 640, 580, SDL_WINDOW_OPENGL);
 
     while(rpg->running())
     {
