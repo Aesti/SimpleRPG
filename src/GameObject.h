@@ -7,11 +7,15 @@
 class GameObject {
   public:
     GameObject(RenderContext &ctx, std::string imgResource, std::string resID);
+    GameObject(const GameObject &object) {
+      m_imageID = object.getImageID();
+    }
     virtual ~GameObject();
 
     void draw(RenderContext &ctx, int x, int y);
-
-    std::string getImageID() { return m_imageID; }
+    void draw(RenderContext &ctx, POINT p) { draw(ctx, p.x, p.y); }
+    
+    std::string const getImageID() const { return m_imageID; }
     void setImageID(std::string id) { m_imageID = id; };
   protected:
     std::string m_imageID;

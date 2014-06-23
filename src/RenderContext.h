@@ -8,6 +8,7 @@
 
 typedef SDL_Rect RECT;
 typedef SDL_Texture TEXTURE;
+typedef SDL_Point POINT;
 #endif
 
 #include <string>

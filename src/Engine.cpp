@@ -15,7 +15,7 @@ bool Engine::init()
     isRunning = true;
 
     m_scene = new Scene();
-    m_scene->add(GameObject(m_context, std::string("res/hero1.png"), std::string("hero")), 0);
+    m_scene->add(GameObject(m_context, std::string("res/hero1.png"), std::string("hero")), 0, {300, 400});
     return true;
 
 }
