@@ -21,7 +21,27 @@ void WorldState::render(Engine* rpg, RenderContext &ctx,Scene* m_scene)
     ctx.render();
 }
 
-void WorldState::handleEvents(Engine* rpg, bool &isRunning){}
+void WorldState::handleEvents(Engine* rpg, bool &isRunning){
+    SDL_Event event;
+    if(SDL_PollEvent(&event))
+    {
+        switch (event.type)
+        {
+            case SDL_QUIT:
+                isRunning = false;
+                break;
+            case SDL_KEYDOWN:
+                switch (event.key.keysym.sym){
+                    case SDLK_RETURN:
+                    std::cout << "Leaving WorldState\n";
+                    //rpg->ChangeState( BattleState::Instance());
+                    break;
+                }
+            default:
+            break;
+        }
+    }
+}
 
 void WorldState::update(Engine* rpg,Scene* m_scene){
    	m_scene->update();
