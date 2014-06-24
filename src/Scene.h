@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "enums.h"
+#include <memory>
 
 struct GameObjectDesc {
 public:
