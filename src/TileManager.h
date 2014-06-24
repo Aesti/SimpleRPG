@@ -1,27 +1,20 @@
-struct Tileset
-{
-int firstGridID;
-int tileWidth;
-int tileHeight;
-int spacing;
-int margin;
-int width;
-int height;
-int numColumns;
-std::string name;
-};
+#ifndef TILEMANAGER_H
+#define TILEMANAGER_H
+#include <map>
+
+//tile sprites
+const int TILE_GRASS = 0;
 
 class GameTiles
 {
 public:
-	GameTiles();
-	~GameTiles() {}
+	ImageManager();
+	~ImageManager() {}
 
 	void update();
 	void render();
 
-	std::vector<Tileset>* getTilesets(){return &m_tilesets;}
-private:
-	std::vector<Tileset> m_tilesets;
+protected:
+	//std::map<std::string,
 
 };
