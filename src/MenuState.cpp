@@ -9,7 +9,9 @@ void MenuState::Init(RenderContext& ctx,Scene* m_scene){
 	std::cout << "Initializing MenuState\n";
 	m_scene->add(GameObject(ctx, std::string("res/hero1.png"), std::string("hero")), 0, {300, 400}, true);
 }
-void MenuState::Cleanup(RenderContext& ctx,Scene* m_scene){}
+void MenuState::Cleanup(RenderContext& ctx,Scene* m_scene){
+    m_scene->remove();
+}
 
 void MenuState::Pause(){}
 

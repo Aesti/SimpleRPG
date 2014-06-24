@@ -32,6 +32,7 @@ void Scene::add(GameObject obj, int layer, POINT pt, bool isPlayer) {
 }
 void Scene::remove(){
   m_layers.clear();
+  m_player = NULL;
 }
 
 void Scene::draw(RenderContext &ctx) {
