@@ -2,6 +2,7 @@
 #include <string>
 
 #include "GameObject.h"
+#include "enums.h"
 
 Engine::Engine(std::string title, int xpos, int ypos, int width, int height, int flags) :
 m_context(title, xpos, ypos, width, height, flags) {
@@ -14,11 +15,23 @@ bool Engine::init()
     // m_context = RenderContext(title, xpos, ypos, width, height, flags);
     isRunning = true;
 
+
     m_scene = new Scene();
-    m_scene->add(GameObject(m_context, std::string("res/hero1.png"), std::string("hero")), 0, {300, 400});
+    m_scene->add(GameObject(m_context, std::string("res/hero1.png"), std::string("hero")), 0, {300, 400}, true);
     return true;
 
 }
+
+void Engine::go() {
+    while(running())
+    {
+        handleEvents();
+        update();
+        render();
+    }
+    clean();
+}
+
 void Engine::render()
 {
     m_context.clear();
@@ -46,6 +59,7 @@ void Engine::handleEvents()
         }
     }
 }
+
 void Engine::update(){
-    
+    m_scene->update();
 }

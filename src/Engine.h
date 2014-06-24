@@ -17,6 +17,8 @@ public:
     void render();
     void update();
     void handleEvents();
+    void go();
+
     void clean();
     bool running() { return isRunning; };
 private:
