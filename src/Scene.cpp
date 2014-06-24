@@ -43,7 +43,7 @@ void Scene::draw(RenderContext &ctx) {
     for (auto obj = it->second.begin(); obj != it->second.end(); ++obj) {
       obj->draw(ctx);
     }
-    std::cout << m_player << std::endl;
+    //std::cout << m_player << std::endl;
     if (m_player != nullptr) {
       auto it2(it);
       it2++;
