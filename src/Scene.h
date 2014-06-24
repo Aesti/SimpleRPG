@@ -35,7 +35,7 @@ public:
 
   void add(GameObject obj, int layer, POINT pt, bool isPlayer = false);
   void addPlayer(GameObject obj, int layer, POINT pt);
-  void remove(GameObject obj);
+  void remove();
 
   void draw(RenderContext &ctx);
   void update();

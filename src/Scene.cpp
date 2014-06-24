@@ -30,6 +30,9 @@ void Scene::add(GameObject obj, int layer, POINT pt, bool isPlayer) {
     m_layers.insert(std::pair<int, std::vector<GameObjectDesc>>(layer, list));
   }
 }
+void Scene::remove(){
+  m_layers.clear();
+}
 
 void Scene::draw(RenderContext &ctx) {
   if (m_layers.size() == 0) {

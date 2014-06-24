@@ -7,7 +7,7 @@ class MenuState : public GameState
 {
 public:
 	void Init(RenderContext& ctx, Scene* m_scene);
-	void Cleanup();
+	void Cleanup(RenderContext& ctx,Scene* m_scene);
 
 	void Pause();
 	void Resume();

@@ -7,7 +7,7 @@ class GameState
 {
 public:
 	virtual void Init(RenderContext& ctx,Scene* m_scene) = 0;
-	virtual void Cleanup() = 0;
+	virtual void Cleanup(RenderContext& ctx,Scene* m_scene) = 0;
 
 	virtual void Pause() = 0;
 	virtual void Resume() = 0;

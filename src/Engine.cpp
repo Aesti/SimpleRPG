@@ -37,7 +37,7 @@ void Engine::ChangeState(GameState* state)
 {
     // cleanup the current state
     if ( !states.empty() ) {
-        states.back()->Cleanup();
+        states.back()->Cleanup(m_context,m_scene);
         states.pop_back();
     }
 
@@ -62,7 +62,7 @@ void Engine::PopState()
 {
     // cleanup the current state
     if ( !states.empty() ) {
-        states.back()->Cleanup();
+        states.back()->Cleanup(m_context,m_scene);
         states.pop_back();
     }
 
@@ -91,7 +91,7 @@ void Engine::render()
 void Engine::clean()
 {
     while ( !states.empty() ) {
-        states.back()->Cleanup();
+        states.back()->Cleanup(m_context,m_scene);
         states.pop_back();
     }
     // shutdown SDL

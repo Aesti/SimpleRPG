@@ -8,7 +8,7 @@ void WorldState::Init(RenderContext& ctx,Scene* m_scene){
 	std::cout << "Initializing WorldState\n";
 	//m_scene->add(GameObject(ctx, std::string("res/hero1.png"), std::string("hero")), 0, {300, 400}, true);
 }
-void WorldState::Cleanup(){}
+void WorldState::Cleanup(RenderContext& ctx,Scene* m_scene){}
 
 void WorldState::Pause(){}
 
