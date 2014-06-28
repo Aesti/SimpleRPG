@@ -41,6 +41,7 @@ private:
     Scene *m_scene;
 
     bool isRunning;
+    bool isFullscreen;
 
 
 };
