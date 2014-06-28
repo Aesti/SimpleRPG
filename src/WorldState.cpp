@@ -3,10 +3,12 @@
 #include "WorldState.h"
 
 WorldState WorldState::m_WorldState;
+Tiles* tile;
 
 void WorldState::Init(RenderContext& ctx,Scene* m_scene){
 	std::cout << "Initializing WorldState\n";
-	m_scene->add(GameObject(ctx, std::string("res/test.png"), std::string("test")), 0, {0, 0}, false);
+    Tiles* tile;
+    tile->CreateMap(ctx,m_scene);
     m_scene->add(GameObject(ctx, std::string("res/hero1.png"), std::string("hero")), 0, {300, 200}, true);
 }
 void WorldState::Cleanup(RenderContext& ctx,Scene* m_scene){}

@@ -8,6 +8,7 @@
 
 #include "RenderContext.h"
 #include "Scene.h"
+#include "Tiles.h"
 
 class GameState;
 
