@@ -7,6 +7,7 @@ Tiles* tile;
 
 void WorldState::Init(RenderContext& ctx,Scene* m_scene){
 	std::cout << "Initializing WorldState\n";
+    ctx.checkFS(isFullscreen = false);
     Tiles* tile;
     tile->CreateMap(ctx,m_scene);
     m_scene->add(GameObject(ctx, std::string("res/hero1.png"), std::string("hero")), 0, {300, 200}, true);
@@ -37,6 +38,7 @@ void WorldState::handleEvents(Engine* rpg, bool &isRunning){
                 switch (event.key.keysym.sym){
                     case SDLK_RETURN:
                     std::cout << "Leaving WorldState\n";
+                    isRunning = false;
                     //rpg->ChangeState( BattleState::Instance());
                     break;
                 }

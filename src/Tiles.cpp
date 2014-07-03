@@ -1,9 +1,13 @@
 #include "Tiles.h"
 
 void Tiles::CreateMap(RenderContext& ctx,Scene* m_scene){
-    //screen width divided by tile width is 16
-    //screen height divided by tile height is 12
-    //192 tiles
+    std::cout << "Creating World Map" << std::endl;
+    std::cout << "World Width: " << ctx.wWidth << std::endl;
+    std::cout << "World Height: " << ctx.wHeight << std::endl;
+
+    int width = ctx.wWidth/TILESIZE;
+    int height =  ctx.wHeight/TILESIZE;
+
     int tileMap[13][17] = {
         {1,0,0,0,1,1,1,1,1,0,0,0,1,1,1,1},
         {1,1,1,1,1,0,0,0,0,0,0,0,1,1,1,1},
@@ -19,10 +23,9 @@ void Tiles::CreateMap(RenderContext& ctx,Scene* m_scene){
         {1,1,1,1,1,0,0,0,0,0,0,0,1,1,1,1},
         {0,0,0,0,1,1,1,1,1,0,0,0,1,1,1,1}
     };
-    std::cout << "Creating World Map" << std::endl;
-    for(int x = 0; x < 12; x++)
+    for(int x = 0; x < height; x++)
     {
-        for(int y = 0; y < 16; y++)
+        for(int y = 0; y < width; y++)
         {
             if(tileMap[x][y] == 0){
                 m_scene->add(GameObject(ctx, std::string("res/grass1.png"), std::string("grass")), 0, {y * TILESIZE, x * TILESIZE}, false);

@@ -13,6 +13,8 @@ RenderContext::RenderContext(std::string title, int xpos, int ypos, int width, i
     SDL_Quit();
     return;
   }
+  wWidth = width;
+  wHeight = height;
   
   m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 }
@@ -25,6 +27,18 @@ RenderContext::~RenderContext() {
   SDL_DestroyRenderer(m_renderer);
 }
 #endif
+
+void RenderContext::checkFS(bool isFullscreen){
+    #ifdef SDL2_RENDERER_DEF
+    Uint32 flags = (SDL_GetWindowFlags(m_window) ^ SDL_WINDOW_FULLSCREEN_DESKTOP);
+    if (!isFullscreen){
+        SDL_SetWindowSize(m_window,wWidth,wHeight);
+    }
+    else{
+        SDL_SetWindowFullscreen(m_window,flags);
+    }
+    #endif
+}
 
 void RenderContext::clear() {
   #ifdef SDL2_RENDERER_DEF

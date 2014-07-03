@@ -95,5 +95,6 @@ void Engine::clean()
         states.pop_back();
     }
     // shutdown SDL
+    m_context.checkFS(!isFullscreen);
     SDL_Quit();
 }
