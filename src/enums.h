@@ -10,3 +10,10 @@ enum UpdateData {
   MOVE_LEFT,
   MOVE_RIGHT
 };
+
+enum PanDirection {
+  PAN_UP = 0,
+  PAN_DOWN, 
+  PAN_LEFT,
+  PAN_RIGHT
+};
