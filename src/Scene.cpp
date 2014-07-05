@@ -7,7 +7,7 @@
 
 void Scene::addPlayer(GameObject obj, int layer, POINT pt) {
 
-  m_player.reset(new PlayerDesc(obj, pt, layer));
+  m_player.reset(new PlayerDesc(obj, pt, &m_camera, layer));
 
   std::cout << "Adding player" << std::endl;
 }
@@ -20,7 +20,7 @@ void Scene::add(GameObject obj, int layer, POINT pt, bool isPlayer) {
 
   auto it = m_layers.find(layer);
 
-  GameObjectDesc objDesc(GameObjectDesc(obj, pt));
+  GameObjectDesc objDesc(GameObjectDesc(obj, pt, &m_camera));
 
   if (it != m_layers.end()) {
     it->second.push_back(objDesc);
@@ -90,4 +90,17 @@ void Scene::movePlayer() {
   }
   m_player->location.x += delta.x;
   m_player->location.y += delta.y;
+
+  if (currentKeyStates[SDL_SCANCODE_W]) {
+    m_camera.pan(PAN_UP);
+  }
+  if (currentKeyStates[SDL_SCANCODE_S]) {
+    m_camera.pan(PAN_DOWN);
+  }
+  if (currentKeyStates[SDL_SCANCODE_A]) {
+    m_camera.pan(PAN_LEFT);
+  }
+  if (currentKeyStates[SDL_SCANCODE_D]) {
+    m_camera.pan(PAN_RIGHT);
+  }
 }
