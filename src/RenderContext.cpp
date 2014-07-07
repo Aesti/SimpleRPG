@@ -13,6 +13,8 @@ RenderContext::RenderContext(std::string title, int xpos, int ypos, int width, i
     SDL_Quit();
     return;
   }
+  TTF_Init();
+
   wWidth = width;
   wHeight = height;
   
@@ -83,5 +85,36 @@ void RenderContext::draw_image(std::string id, int x, int y){
 
   SDL_RenderCopyEx(m_renderer, m_textureMap[id].texture, &srcRect,
     &destRect, 0, 0, SDL_FLIP_NONE);
+}
+#endif
+#ifdef SDL2_RENDERER_DEF
+void RenderContext::draw_text(const char* message, int size, int x, int y){
+  int width, height;
+  font = TTF_OpenFont("res/ubuntu-font-family/Ubuntu-L.ttf",size);
+  if (font == NULL){
+    std::cout << "Font failed to load" << std::endl;
+  }
+  SDL_Rect srcRect;
+  SDL_Rect destRect;
+
+  SDL_Color textColor = { 255, 255, 255 };
+  SDL_Surface* surf = TTF_RenderText_Solid( font, message, textColor );
+  SDL_Texture* texture = SDL_CreateTextureFromSurface(m_renderer, surf);
+  SDL_QueryTexture(texture, NULL, NULL, &width, &height);
+
+  srcRect.x = 0;
+  srcRect.y = 0;
+  srcRect.w = destRect.w = width;
+  srcRect.h = destRect.h = height;
+
+  destRect.x = x;
+  destRect.y = y;
+
+  SDL_RenderCopyEx(m_renderer, texture, &srcRect,
+      &destRect, 0, 0, SDL_FLIP_NONE);
+  //cleanup
+  SDL_FreeSurface(surf);
+  TTF_CloseFont(font);
+  SDL_DestroyTexture(texture);
 }
 #endif

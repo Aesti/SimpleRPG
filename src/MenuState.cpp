@@ -7,7 +7,6 @@ MenuState MenuState::m_MenuState;
 
 void MenuState::Init(RenderContext& ctx,Scene* m_scene){
 	std::cout << "Initializing MenuState\n";
-	m_scene->add(GameObject(ctx, std::string("res/hero1.png"), std::string("hero")), 0, {300, 400}, true);
 }
 void MenuState::Cleanup(RenderContext& ctx,Scene* m_scene){
     m_scene->remove();
@@ -21,6 +20,7 @@ void MenuState::render(Engine* rpg, RenderContext &ctx,Scene* m_scene)
 {
     ctx.clear();
     m_scene->draw(ctx);
+    ctx.draw_text("Hello World!",28,0,150);
     ctx.render();
 }
 
@@ -37,7 +37,7 @@ SDL_Event event;
             	switch (event.key.keysym.sym){
             		case SDLK_RETURN:
             		std::cout << "Leaving MenuState\n";
-            		rpg->ChangeState( WorldState::Instance());
+                    rpg->ChangeState( WorldState::Instance());
             		break;
             	}
             default:

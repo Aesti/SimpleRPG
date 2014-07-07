@@ -1,11 +1,11 @@
 CXX = g++
 MACHINE= $(shell uname -s)
 ifeq ($(MACHINE),Darwin)
-    SDL = -framework SDL2 -framework SDL2_image
+    SDL = -framework SDL2 -framework SDL2_image -framework SDL2_ttf
     CXXFLAGS = -Wall -c -std=c++11
     LDFLAGS = $(SDL)
 else
-    SDL_LIB = -L/usr/local/lib -lSDL2 -lSDL2_image -Wl,-rpath=/usr/local/lib
+    SDL_LIB = -L/usr/local/lib -lSDL2 -lSDL2_image -lSDL2_ttf -Wl,-rpath=/usr/local/lib
 	SDL_INCLUDE = -I/usr/local/include
 	CXXFLAGS = -Wall -c -std=c++11 $(SDL_INCLUDE)
 	LDFLAGS = $(SDL_LIB)

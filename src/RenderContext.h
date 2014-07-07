@@ -36,6 +36,7 @@ public:
   void render();
   void load_image(std::string file, std::string id);
   void draw_image(std::string id, int x, int y);
+  void draw_text(const char* message, int size, int x, int y);
   std::map<std::string, TextureDesc> m_textureMap;
 
   int wWidth = 0;
@@ -46,6 +47,7 @@ private:
   #ifdef SDL2_RENDERER_DEF
   SDL_Renderer *m_renderer;
   SDL_Window *m_window;
+  TTF_Font *font = NULL;
   #endif
 };
 
