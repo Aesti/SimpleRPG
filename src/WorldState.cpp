@@ -7,7 +7,7 @@ Tiles* tile;
 
 void WorldState::Init(RenderContext& ctx,Scene* m_scene){
 	std::cout << "Initializing WorldState\n";
-    ctx.checkFS((isFullscreen = false)); //reassigning
+    ctx.checkFS((isFullscreen = true)); //reassigning
     Tiles* tile = NULL;
     tile->CreateMap(ctx,m_scene);
     m_scene->add(GameObject(ctx, std::string("res/hero1.png"), std::string("hero")), 0, {300, 200}, true);

@@ -14,11 +14,9 @@ RenderContext::RenderContext(std::string title, int xpos, int ypos, int width, i
     return;
   }
   TTF_Init();
-
-  wWidth = width;
-  wHeight = height;
   
   m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+  SDL_RenderSetLogicalSize(m_renderer,width,height);
 }
 
 RenderContext::RenderContext() {
@@ -34,7 +32,7 @@ void RenderContext::checkFS(bool isFullscreen){
     #ifdef SDL2_RENDERER_DEF
     Uint32 flags = (SDL_GetWindowFlags(m_window) ^ SDL_WINDOW_FULLSCREEN_DESKTOP);
     if (!isFullscreen){
-        SDL_SetWindowSize(m_window,wWidth,wHeight);
+        SDL_SetWindowSize(m_window,640,480);
     }
     else{
         SDL_SetWindowFullscreen(m_window,flags);

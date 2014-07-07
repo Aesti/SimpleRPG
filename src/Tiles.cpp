@@ -10,11 +10,9 @@ void toIso(int *j, int *i){
 }
 void Tiles::CreateMap(RenderContext& ctx,Scene* m_scene){
     std::cout << "Creating World Map" << std::endl;
-    std::cout << "World Width: " << ctx.wWidth << std::endl;
-    std::cout << "World Height: " << ctx.wHeight << std::endl;
 
-    int width = ctx.wWidth/TILESIZE;
-    int height =  ctx.wHeight/TILESIZE;
+    int width = 640/TILESIZE;
+    int height =  480/TILESIZE;
 
     int tileMap[13][17] = {
         {1,0,0,0,1,1,1,1,1,0,0,0,1,1,1,1},

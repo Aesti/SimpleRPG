@@ -39,8 +39,6 @@ public:
   void draw_text(const char* message, int size, int x, int y);
   std::map<std::string, TextureDesc> m_textureMap;
 
-  int wWidth = 0;
-  int wHeight = 0;
   bool isFullscreen = false;
 
 private:

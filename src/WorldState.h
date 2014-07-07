@@ -26,7 +26,7 @@ protected:
 
 private:
 	static WorldState m_WorldState;
-    int isFullscreen = false;
+    bool isFullscreen = false;
 
 };
 
